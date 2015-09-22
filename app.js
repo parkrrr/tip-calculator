@@ -1,4 +1,34 @@
 /* global ko */
+function Utility() {}
+Utility.isEmptyOrWhitespace = function(str) {
+        var result =  str.toString().trim() === '';
+        return result;
+}
+
+Utility.calculateTip = function(billAmount, tipPercent, roundDirection) {
+        if (Utility.isEmptyOrWhitespace(billAmount)) return;
+        if (Utility.isEmptyOrWhitespace(tipPercent)) return;
+        if (Utility.isEmptyOrWhitespace(roundDirection)) return;
+        if (roundDirection != "up" && roundDirection != "down") return;
+        
+        var tipAmount = billAmount * (tipPercent / 100);
+        var total = +tipAmount + +billAmount;
+        console.debug("round: " + roundDirection);
+
+        var newTotal, diff, newTip;
+        if (roundDirection === "up") {
+            newTotal = Math.ceil(total);
+            diff = newTotal - total;
+            newTip = tipAmount + diff;
+        } else {
+            newTotal = Math.floor(total);
+            diff = total - newTotal;
+            newTip = tipAmount - diff;
+        }
+
+        return newTip.toFixed(2);
+}
+
 function AppViewModel() {
     var self = this;
 
@@ -7,7 +37,7 @@ function AppViewModel() {
     this.roundDirection = ko.observable("up");
 
     this.tipAmount = ko.computed(function () {
-        return refreshValues(self.billAmount(), self.tipPercent(), self.roundDirection());
+        return Utility.calculateTip(self.billAmount(), self.tipPercent(), self.roundDirection());
     }, this);
 
     this.roundedTotal = ko.computed(function () {
@@ -23,36 +53,8 @@ function AppViewModel() {
     });
     
     this.refresh = function () {
-        return refreshValues(self.billAmount(), self.tipPercent(), self.roundDirection());
+        return Utility.calculateTip(self.billAmount(), self.tipPercent(), self.roundDirection());
     };
-    
-    function refreshValues(billAmount, tipPercent, roundDirection) {
-        if (isEmptyOrWhitespace(billAmount)) return;
-        if (isEmptyOrWhitespace(tipPercent)) return;
-        if (isEmptyOrWhitespace(roundDirection)) return;
-        if (roundDirection != "up" && roundDirection != "down") return;
-        
-        var tipAmount = billAmount * (tipPercent / 100);
-        var total = +tipAmount + +billAmount;
-        console.debug("round: " + roundDirection);
-
-        var newTip;
-        if (roundDirection === "up") {
-            var newTotal = Math.ceil(total);
-            var diff = newTotal - total;
-            newTip = tipAmount + diff;
-        } else {
-            var newTotal = Math.floor(total);var diff = total - newTotal;
-            newTip = tipAmount - diff;
-        }
-
-        return newTip.toFixed(2);
-    }
-    
-    function isEmptyOrWhitespace(str){
-        var result =  str.toString().trim() === '';
-        return result;
-    }
 }
 
 ko.applyBindings(new AppViewModel());
