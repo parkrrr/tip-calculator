@@ -29,7 +29,7 @@ function AppViewModel() {
         if (isEmptyOrWhitespace(billAmount)) return;
         if (isEmptyOrWhitespace(tipPercent)) return;
         if (isEmptyOrWhitespace(roundDirection)) return;
-        if (roundDirection != "up" && round != "down") return;
+        if (roundDirection != "up" && roundDirection != "down") return;
         
         var tipAmount = billAmount * (tipPercent / 100);
         var total = +tipAmount + +billAmount;
