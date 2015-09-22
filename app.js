@@ -1,3 +1,4 @@
+/* global ko */
 function AppViewModel() {
     var self = this;
 
