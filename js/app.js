@@ -13,20 +13,28 @@ function AppViewModel() {
     }, this);
 
     this.roundedTotal = ko.computed(function () {
-        return (+self.billAmount() + +self.tipAmount()).toFixed(2);
+        return formatCurrency((+self.billAmount() + +self.tipAmount()))
     }, this);
     
     this.actualTipPercent = ko.computed(function () {
-        return ((+self.tipAmount() / +self.billAmount()) * 100).toFixed(1);
+        return ((+self.tipAmount() / +self.billAmount()) * 100);
     }, this);
     
     this.tipToText = ko.computed(function () {
-        return self.tipAmount() + " (" + self.actualTipPercent() + "%)";
+        return self.tipAmount() + " (" + formatPercent(self.actualTipPercent()) + ")";
     });
     
     this.refresh = function () {
         return Engine.calculateTip(self.billAmount(), self.tipPercent(), self.roundDirection());
     };
+
+    function formatCurrency(num) {
+      return num.toFixed(2);
+    }
+
+    function formatPercent(num) {
+      return num.toFixed(1) + "%";
+    }
 }
 
 ko.applyBindings(new AppViewModel());
