@@ -23,10 +23,6 @@ function AppViewModel() {
     this.tipToText = ko.computed(function () {
         return self.tipAmount() + " (" + formatPercent(self.actualTipPercent()) + ")";
     });
-    
-    this.refresh = function () {
-        return Engine.calculateTip(self.billAmount(), self.tipPercent(), self.roundDirection());
-    };
 
     function formatCurrency(num) {
       return num.toFixed(2);
