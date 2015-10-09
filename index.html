@@ -10,12 +10,14 @@
     </head>
     <body>
       <div class="container">
-          <form class="form-horizontal">
+        <div class="row">
+          <div class="col-xs-6 col-md-4">
+            <form class="form-horizontal">
               <div class="form-group">
                   <label for="billAmount" class="col-sm-2 control-label">Bill amount</label>
-                  <div class="col-sm-10">
+                    <div class="col-sm-10">
                       <input type="number" class="form-control" id="billAmount" step="0.01" data-bind="value: billAmount">
-                  </div>
+                    </div>
               </div>
               <div class="form-group">
                   <label for="tipPercent" class="col-sm-2 control-label">Tip %</label>
@@ -32,10 +34,14 @@
                           <input type="radio" name="roundDirection" id="roundDown" value="down" data-bind="checked: roundDirection">Down</label>
                   </div>
               </div>
+            </form>
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <form class="form-horizontal">
               <div class="form-group">
                   <label class="col-sm-2 control-label">Tip amount</label>
                   <div class="col-sm-10">
-                      <p class="form-control-static" data-bind="text: tipToText"></p> 
+                      <p class="form-control-static" data-bind="text: tipToText"></p>
                   </div>
               </div>
               <div class="form-group">
@@ -44,7 +50,8 @@
                       <p class="form-control-static" data-bind="text: roundedTotal"></p>
                   </div>
               </div>
-          </form>
+            </form>
+          </div>
         </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
