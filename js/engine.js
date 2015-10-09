@@ -29,5 +29,6 @@ Engine.calculateTip = function(billAmount, tipPercent, roundDirection) {
         }
 
         if (newTip < 0) newTip = 0;
-        return newTip.toFixed(2);
+
+        return newTip;
 }
