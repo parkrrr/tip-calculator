@@ -12,7 +12,7 @@ QUnit.test("calculateTip input validation", function(assert) {
     assert.notOk(Engine.calculateTip("0.00", " ", " "), "Empty tip percent returns false");
     assert.notOk(Engine.calculateTip("0.00", "20", " "), "Empty rounding direction returns false");
     assert.notOk(Engine.calculateTip("0.00", "20", "sideways"), "Invalid rounding direction returns false");
-    assert.ok(Engine.calculateTip("0.00", "20", "up"), "Valid parameters returns not-false");
+    assert.ok(Engine.calculateTip("0.00", "20", "up") !== "false", "Valid parameters returns not-false");
 });
 
 QUnit.test("calculateTip algorithm", function(assert) {
