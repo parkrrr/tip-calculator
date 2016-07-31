@@ -6,7 +6,7 @@ function AppViewModel() {
 
     this.billAmount = ko.observable(31.32);
     this.tipPercent = ko.observable(20);
-    this.roundDirection = ko.observable("up");
+    this.roundDirection = ko.observable("none");
 
     this.tipAmount = ko.computed(function () {
         var tip = Engine.calculateTip(self.billAmount(), self.tipPercent(), self.roundDirection());
