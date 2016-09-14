@@ -16,7 +16,7 @@ QUnit.test("calculateTip input validation", function(assert) {
 });
 
 QUnit.test("calculateTip algorithm", function(assert) {
-    assert.equal(Engine.calculateTip("10", "20", "up"), 2, "$10 * 20% Up = 2.00");
+    assert.equal(Engine.calculateTip("1", "20", "up"), 2, "$10 * 20% Up = 2.00");
     assert.equal(Engine.calculateTip("10", "20", "down"), 2, "$10 * 20% Down = 2.00");
     
     assert.equal(Engine.calculateTip("10", "10", "up"), 1, "$10 * 10% Up = 1.00");
