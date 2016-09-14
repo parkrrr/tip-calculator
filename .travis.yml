@@ -1,4 +1,7 @@
-before_script:
-  - sudo npm install -g grunt
+language: node_js
+node_js:
+  - "node"
 
-script: grunt test --verbose --force
+before_install: npm install -g grunt-cli
+install: npm install
+after_script: grunt test
