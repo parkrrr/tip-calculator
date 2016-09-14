@@ -1,0 +1,14 @@
+{	
+	"repository" : {
+		"type": "git",
+		"url": "https://github.com/parkrrr/tip-calculator.git"
+	},
+	"devDependencies" : {
+        "grunt": "~1.0.0",
+		"grunt-http-server": "~2.0.0",
+        "grunt-contrib-qunit": "~1.2.0"
+    },
+    "scripts": {
+        "test": "grunt test"
+    }
+}
