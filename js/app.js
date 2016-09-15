@@ -8,38 +8,38 @@ function AppViewModel() {
     this.tipPercent = ko.observable(20);
     this.roundDirection = ko.observable("none");
 
-    this.tipAmount = ko.computed(function () {
+    this.tipAmount = ko.computed(function() {
         var tip = Engine.calculateTip(self.billAmount(), self.tipPercent(), self.roundDirection());
         return formatCurrency(tip);
     }, this);
 
-    this.roundedTotal = ko.computed(function () {
+    this.roundedTotal = ko.computed(function() {
         var total = (+self.billAmount() + +self.tipAmount())
         if (isNaN(total)) {
-          return "N/A";
+            return "N/A";
         }
 
         return formatCurrency(total)
     }, this);
 
-    this.actualTipPercent = ko.computed(function () {
+    this.actualTipPercent = ko.computed(function() {
         var percent = (+self.tipAmount() / +self.billAmount()) * 100;
         return formatPercent(percent);
     }, this);
 
-    this.tipToText = ko.computed(function () {
-      if (isNaN(self.tipAmount())) {
-        return "N/A";
-      }
+    this.tipToText = ko.computed(function() {
+        if (isNaN(self.tipAmount())) {
+            return "N/A";
+        }
         return self.tipAmount() + " (" + self.actualTipPercent() + ")";
     });
 
     function formatCurrency(num) {
-      return num.toFixed(2);
+        return num.toFixed(2);
     }
 
     function formatPercent(num) {
-      return num.toFixed(1) + "%";
+        return num.toFixed(1) + "%";
     }
 }
 

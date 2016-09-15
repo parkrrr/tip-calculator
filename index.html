@@ -1,89 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="mobile-web-app-capable" content="yes">
-        <title>Tip Calculator</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="manifest" href="manifest.json">
-        <link rel="icon" sizes="192x192" href="img/icon/xxxhdpi/ic_launcher.png">
-    </head>
-    <body>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-6 col-md-4">
-            <form class="form-horizontal">
-              <div class="form-group">
-                  <label for="billAmount" class="col-sm-2 control-label">Bill amount</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" id="billAmount" min="0" step="0.01" data-bind="value: billAmount">
-                    </div>
-              </div>
-              <div class="form-group">
-                  <label for="tipPercent" class="col-sm-2 control-label">Tip</label>
-                  <div class="col-sm-10">
-                    <div class="input-group">
-                      <input type="number" class="form-control" id="tipPercent" data-bind="value: tipPercent">
-                      <div class="input-group-addon">%</div>
-                    </div>
-                  </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Round</label>
-                <div class="col-sm-10">
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="roundDirection" id="roundUp" value="up" data-bind="checked: roundDirection">Up
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="roundDirection" id="roundNone" value="none" data-bind="checked: roundDirection">None
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="roundDirection" id="roundDown" value="down" data-bind="checked: roundDirection">Down
-                    </label>
-                  </div>
-                  </div>
-              </div>
-            </form>
-          </div>
-          <div class="col-xs-6 col-md-4">
-            <form class="form-horizontal">
-              <div class="form-group">
-                  <label class="col-sm-2 control-label">Tip amount</label>
-                  <div class="col-sm-10">
-                      <p class="form-control-static" data-bind="text: tipToText"></p>
-                  </div>
-              </div>
-              <div class="form-group">
-                  <label class="col-sm-2 control-label">Total</label>
-                  <div class="col-sm-10">
-                      <p class="form-control-static" data-bind="text: roundedTotal"></p>
-                  </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      <div>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
-      <script src="js/engine.js"></script>
-      <script src="js/app.js"></script>
-      <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-          ga('create', 'UA-79072507-1', 'auto');
-          ga('send', 'pageview');
-      </script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" sizes="192x192" href="img/icon/xxxhdpi/ic_launcher.png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-md-4">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="billAmount" class="col-sm-2 control-label">Bill amount</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="billAmount" min="0" step="0.01" data-bind="value: billAmount">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipPercent" class="col-sm-2 control-label">Tip</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="tipPercent" data-bind="value: tipPercent" />
+                                <div class="input-group-addon">%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Round</label>
+                        <div class="col-sm-10">
+                            <div class="radio">
+                                <label>
+                                  <input type="radio" name="roundDirection" id="roundUp" value="up" data-bind="checked: roundDirection" />Up
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="roundDirection" id="roundNone" value="none" data-bind="checked: roundDirection" />None
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                      <input type="radio" name="roundDirection" id="roundDown" value="down" data-bind="checked: roundDirection" />Down
+                    </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tip amount</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" data-bind="text: tipToText"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Total</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" data-bind="text: roundedTotal"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+            <script src="js/engine.js"></script>
+            <script src="js/app.js"></script>
+            <script>
+                (function(i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function() {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', 'UA-79072507-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+</body>
+
 </html>
