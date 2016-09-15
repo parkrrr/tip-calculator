@@ -1,6 +1,6 @@
 function Engine() {}
 Engine.isEmptyOrWhitespace = function(str) {
-    if (!str) return false;
+    if (str === undefined) return false;
     var result = str.toString().trim() === '';
     return result;
 }
