@@ -4,7 +4,7 @@
 function AppViewModel() {
     var self = this;
 
-    this.billAmount = ko.observable(31.32);
+    this.billAmount = ko.observable();
     this.tipPercent = ko.observable(20);
     this.roundDirection = ko.observable("none");
 
@@ -15,6 +15,10 @@ function AppViewModel() {
 
     this.roundedTotal = ko.computed(function () {
         var total = (+self.billAmount() + +self.tipAmount())
+        if (isNaN(total)) {
+          return "N/A";
+        }
+
         return formatCurrency(total)
     }, this);
 
@@ -24,6 +28,9 @@ function AppViewModel() {
     }, this);
 
     this.tipToText = ko.computed(function () {
+      if (isNaN(self.tipAmount())) {
+        return "N/A";
+      }
         return self.tipAmount() + " (" + self.actualTipPercent() + ")";
     });
 
