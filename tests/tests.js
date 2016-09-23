@@ -7,6 +7,18 @@ QUnit.test("isNullOrWhitespace", function(assert) {
     assert.notOk(Engine.isEmptyOrWhitespace("Cat"), "Non-empty string spaces is considered non-empty");
 });
 
+QUnit.test("isNumeric", function(assert) {
+    assert.ok(Engine.isNumeric(0), "Zero");
+    assert.ok(Engine.isNumeric("0"), "Zero as string");
+    assert.ok(Engine.isNumeric(0.0), "Zero with decimal");
+    assert.notOk(Engine.isNumeric("abc"), "Text");
+    assert.notOk(Engine.isNumeric("\n"), "Escape characters");
+    assert.ok(Engine.isNumeric("10e1"), "Scientific notation");
+    assert.ok(Engine.isNumeric(-1), "Negatives");
+    assert.notOk(Engine.isNumeric("127.0.0.1"), "IP address");
+    assert.ok(Engine.isNumeric(0xFFFFFF), "Hex");
+});
+
 QUnit.test("calculateTip input validation", function(assert) {
     assert.notOk(Engine.calculateTip("", "", ""), "Empty billing amount returns false");
     assert.notOk(Engine.calculateTip("0.00", " ", " "), "Empty tip percent returns false");
