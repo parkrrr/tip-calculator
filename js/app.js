@@ -10,7 +10,7 @@ function AppViewModel() {
 
     this.tipAmount = ko.computed(function() {
         var tip = Engine.calculateTip(self.billAmount(), self.tipPercent(), self.roundDirection());
-        if (tip) return formatCurrency(tip);
+        if (Engine.isNumeric(tip)) return formatCurrency(tip);
     }, this);
 
     this.roundedTotal = ko.computed(function() {

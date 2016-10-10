@@ -5,6 +5,10 @@ Engine.isEmptyOrWhitespace = function(str) {
     return result;
 }
 
+Engine.isNumeric = function(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 Engine.calculateTip = function(billAmount, tipPercent, roundDirection) {
     if (Engine.isEmptyOrWhitespace(billAmount)) return false;
     if (Engine.isEmptyOrWhitespace(tipPercent)) return false;
