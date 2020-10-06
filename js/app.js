@@ -5,7 +5,7 @@ function AppViewModel() {
     var self = this;
 
     this.billAmount = ko.observable();
-    this.tipPercent = ko.observable();
+    this.tipPercent = ko.observable(20);
     this.roundDirection = ko.observable("none");
 
     this.tipAmount = ko.computed(function() {
