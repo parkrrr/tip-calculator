@@ -1,10 +1,12 @@
 module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
-        'http-server': {
-            'test': {
+        connect: {
+            server: {
+              options: {
                 port: 8080,
-                runInBackground: true
+                hostname: 'localhost'
+              }
             }
         },
         qunit: {
@@ -18,8 +20,8 @@ module.exports = function(grunt) {
 
     // Load plugin
     grunt.loadNpmTasks('grunt-contrib-qunit');
-    grunt.loadNpmTasks('grunt-http-server');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.registerTask('default', []);
-    grunt.registerTask('test', ['http-server:test', 'qunit']);
+    grunt.registerTask('test', ['connect', 'qunit']);
 };
