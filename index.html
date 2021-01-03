@@ -14,10 +14,10 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-xs-6 col-md-4">
+            <div class="col-xs-6 col-md-6">
                 <form class="form-horizontal">
                     <div class="form-group">
-						<label for="billAmount" class="col-sm-2 control-label">Bill amount</label>
+						<label for="billAmount" class="col control-label">Bill amount</label>
                         <div class="col-sm-10">
 							<div class="input-group">
 								<div class="input-group-prepend">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="tipPercent" class="col-sm-2 control-label">Tip</label>
+                        <label for="tipPercent" class="col control-label">Tip</label>
                         <div class="col-sm-10">
                             <div class="input-group">
                                 <input type="number" class="form-control form-control-lg" id="tipPercent" data-bind="value: tipPercent" />
@@ -61,16 +61,16 @@
                     </div>
                 </form>
             </div>
-            <div class="col-xs-6 col-md-4">
+            <div class="col-xs-6 col-md-6">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Tip amount</label>
+                        <label class="col control-label">Tip amount</label>
                         <div class="col-sm-10">
                             <h2 class="form-control-static" data-bind="text: tipToText"></h2>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Total</label>
+                        <label class="col control-label">Total</label>
                         <div class="col-sm-10">
                             <h2 class="form-control-static" data-bind="text: roundedTotal"></h2>
                         </div>
