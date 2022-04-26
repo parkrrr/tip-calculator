@@ -33,6 +33,11 @@ function AppViewModel() {
         return self.tipAmount() + " (" + self.actualTipPercent() + ")";
     });
 
+    this.modifyTip = function(delta) {
+        var value = +self.tipPercent() + delta;
+        self.tipPercent(value);
+    }
+
     function formatCurrency(num) {
         return num.toFixed(2);
     }

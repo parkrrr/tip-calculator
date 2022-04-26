@@ -30,34 +30,31 @@
                     <div class="form-group">
                         <label for="tipPercent" class="col control-label">Tip</label>
                         <div class="col-sm-10">
-                            <div class="input-group">
-                                <input type="number" class="form-control form-control-lg" id="tipPercent" data-bind="value: tipPercent" />
+                            <div class="input-group input-group-lg">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary" type="button" data-bind="click: modifyTip.bind(this, -1)">-</button>
+                                  </div>
+                                <input type="number" class="form-control" id="tipPercent" data-bind="value: tipPercent" />
 								<div class="input-group-append">
 									<div class="input-group-text">%</div>
+                                    <button class="btn btn-outline-secondary" type="button" data-bind="click: modifyTip.bind(this, 1)">+</button>
 								  </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Round</label>
-						<div class="form-check">
-							<input type="radio" name="roundDirection" id="roundUp" value="up" data-bind="checked: roundDirection" />
-							<label class="form-check-label" for="roundUp">
-								Up
-							</label>
-						</div>
-						<div class="form-check">
-							<input type="radio" name="roundDirection" id="roundNone" value="none" data-bind="checked: roundDirection" />
-							<label class="form-check-label" for="roundNone">
-								None
-							</label>
-						</div>
-						<div class="form-check disabled">
-							<input type="radio" name="roundDirection" id="roundDown" value="down" data-bind="checked: roundDirection" />
-							<label class="form-check-label" for="roundDown">
-								Down
-							</label>
-						</div>
+                        <div class=" btn-group-vertical btn-group-toggle btn-group-lg col-sm-12" data-toggle="buttons">
+                            <label class="btn btn-secondary" data-bind="css: { active: roundDirection() === 'up' }">
+                                <input type="radio" name="roundDirection" id="roundUp" value="up" data-bind="checked: roundDirection"> Up
+                            </label>
+                            <label class="btn btn-secondary active" data-bind="css: { active: roundDirection() === 'none' }">
+                                <input type="radio" name="roundDirection" id="roundNone" value="none" data-bind="checked: roundDirection"> None
+                            </label>
+                            <label class="btn btn-secondary" data-bind="css: { active: roundDirection() === 'down' }">
+                                <input type="radio" name="roundDirection" id="roundDown" value="down" data-bind="checked: roundDirection"> Down
+                            </label>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -79,7 +76,7 @@
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
     <script src="js/engine.js"></script>
     <script src="js/app.js"></script>
 </body>
