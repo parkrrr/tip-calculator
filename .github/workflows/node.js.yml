@@ -11,19 +11,17 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  Test:
     runs-on: windows-latest
 
     strategy:
       matrix:
-        browser: ['chrome', 'firefox']
+        browser: ['Chrome', 'Firefox']
 
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
-    - run: npm install -g grunt-cli
+    - run: npm install
       env:
-          PUPPETEER_PRODUCT: ${{ matrix.browser }}
-    - run: npm ci
-    - run: npm run build --if-present
+        PUPPETEER_PRODUCT: ${{ matrix.browser }}
     - run: npm test
