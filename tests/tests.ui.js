@@ -98,7 +98,7 @@ async function launchBrowser(fn, args) {
         .on('pageerror', message => console.log(message))
         .on('requestfailed', request => console.log(`${request.failure().errorText} ${request.url()}`));
 
-    await page.goto(`file://${__dirname}/../index.html`);
+    await page.goto(`http://localhost:8080/index.html`);
     await fn(page);
   }
   finally {

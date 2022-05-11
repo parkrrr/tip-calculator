@@ -7,10 +7,15 @@
         "grunt": "~1.5.2",
         "grunt-contrib-connect": "~3.0.0",
         "grunt-contrib-qunit": "~6.0.0",
-        "node-qunit-puppeteer": "^2.1.0",
-        "puppeteer": "^13.7.0"
+        "grunt-run": "^0.8.1",
+        "grunt-shell": "^4.0.0",
+        "load-grunt-tasks": "^5.1.0",
+        "puppeteer": "^13.7.0",
+        "qunit": "^2.19.1"
     },
     "scripts": {
-        "test": "grunt test"
+        "test": "grunt",
+        "unit_test": "grunt test",
+        "ui_test": "grunt ui_test"
     }
 }
