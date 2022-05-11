@@ -8,7 +8,8 @@ on:
     branches: [ master ]
 
 jobs:
-  UnitTests:
+  unit_tests:
+    name: Unit Tests
     runs-on: windows-latest
 
     steps:
@@ -17,7 +18,8 @@ jobs:
     - run: npm install
     - run: npm run unit_test
 
-  BrowserTests:
+  ui_tests:
+    name: Browser Tests
     runs-on: windows-latest
 
     strategy:
