@@ -16,10 +16,42 @@ Load https://parkrrr.github.io/tip-calculator/ into your mobile browser of choic
 * **Total** indicates the bill amount plus tip amount.
 
 # Tests
-You can view the tests by visiting https://parkrrr.github.io/tip-calculator/tests/index.html
+This project has unit tests and integration tests.
 
-The automated tests can be run with Grunt:
+## Unit tests
+The unit tests verify the functionality of the business logic and its utility functions.
+
+* The unit test results can be found in the [Actions](https://github.com/parkrrr/tip-calculator/actions) tab under the **Unit Tests** job
+* The unit tests can also be viewed as part of the live site: https://parkrrr.github.io/tip-calculator/tests/index.html
+
+## Integration tests
+The integration tests verify proper behavior of the UI.
+
+* The integration tests can only be found in the [Actions](https://github.com/parkrrr/tip-calculator/actions) tab.
+* The integration tests utilize [Puppeteer](https://github.com/puppeteer/puppeteer) to test the UI.
+* Tests are run in Chrome and Firefox.
+
+
+
+## Running tests
+The unit tests can be run with Grunt:
 ```
 npm install
-grunt test
+npm run unit_test
+```
+
+The integration tests can also be run with Grunt, but only oen browser can be tested at a time. The `node_modules` directory must be deleted before switching browsers.
+
+### Chrome
+
+```
+npm install
+npm run ui_test
+```
+
+### Firefox
+```
+PUPPETEER_PRODUCT=firefox
+npm install
+npm run ui_test
 ```
