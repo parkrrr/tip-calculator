@@ -30,6 +30,6 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
     - name: setting browser
-      run: echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $env:GITHUB_ENV
+      run: echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $env:GITHUB_ENV # because powershell
     - run: npm install
     - run: npm run ui_test
