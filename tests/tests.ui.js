@@ -101,6 +101,10 @@ async function launchBrowser(fn, args) {
     await page.goto(`http://localhost:8080/index.html`);
     await fn(page);
   }
+  catch (err) {
+    console.error(err);
+    throw err;
+  }
   finally {
     await browser.close();
   }

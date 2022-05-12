@@ -29,7 +29,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
-    - run: npm install
+    - name: Setting browser
       env:
         PUPPETEER_PRODUCT: ${{ matrix.browser }}
+    - run: npm install
     - run: npm run ui_test
