@@ -1,6 +1,9 @@
 name: Tests
 
 on:
+  schedule:
+    # weekly build
+    - cron:  '0 1 * * 0'
   push:
     branches:
       - "**"
