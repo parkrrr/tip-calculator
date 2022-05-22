@@ -1,4 +1,6 @@
 # Tip Calculator
+[![Tests](https://github.com/parkrrr/tip-calculator/actions/workflows/node.js.yml/badge.svg?branch=master&event=schedule)](https://github.com/parkrrr/tip-calculator/actions/workflows/node.js.yml)
+
 
 # About
 I originally wrote this as an exercise to learn automated unit testing in JavaScript. I started using it regularly on my phone so now it's a pet project. It has a very limited scope of functionality but I try to make that experience as easy and as intuitive as possible.
