@@ -10,7 +10,7 @@ QUnit.module('Basic functionality test', hooks => {
       const element = await page.waitForSelector('#tipAmount');
       const value = await element.evaluate(el => el.textContent);
       assert.equal(value, "2.00 (20.0%)")
-    });
+    }, "1");
   });
 
   QUnit.test("Round up", async assert => {
@@ -22,7 +22,7 @@ QUnit.module('Basic functionality test', hooks => {
       const element = await page.waitForSelector('#total');
       const value = await element.evaluate(el => el.textContent);
       assert.equal(value, "13.00");
-    });
+    }, "2");
   });
 
   QUnit.test("Round down", async assert => {
@@ -34,7 +34,7 @@ QUnit.module('Basic functionality test', hooks => {
       const element = await page.waitForSelector('#total');
       const value = await element.evaluate(el => el.textContent);
       assert.equal(value, "12.00");
-    });
+    }, "3");
   });
 });
 
@@ -52,7 +52,7 @@ QUnit.module('Adjusting tip percentage', hooks => {
       const element = await page.waitForSelector('#total');
       const value = await element.evaluate(el => el.textContent);
       assert.equal(value, "14.00")
-    });
+    }, "4");
   });
 
   QUnit.test("Decrease tip", async assert => {
@@ -68,7 +68,7 @@ QUnit.module('Adjusting tip percentage', hooks => {
       const element = await page.waitForSelector('#total');
       const value = await element.evaluate(el => el.textContent);
       assert.equal(value, "12.00")
-    });
+    }, "5");
   });
 
   QUnit.test("Specify tip", async assert => {
@@ -84,15 +84,17 @@ QUnit.module('Adjusting tip percentage', hooks => {
       const element = await page.waitForSelector('#total');
       const value = await element.evaluate(el => el.textContent);
       assert.equal(value, "16.00");
-    });
+    }, "6");
   });
 });
 
-async function launchBrowser(fn, args) {
+async function launchBrowser(fn, filename, args) {
   let browser = null;
   try {
     browser = await puppeteer.launch(args);
     const page = await browser.newPage();
+
+    await page.emulate(puppeteer.devices["Pixel 5"]);
 
     page.on('console', message => console.log(`${message.type()} ${message.text()}`))
         .on('pageerror', message => console.log(message))
@@ -100,6 +102,7 @@ async function launchBrowser(fn, args) {
 
     await page.goto(`http://localhost:8080/index.html`);
     await fn(page);
+    await page.screenshot({ path: `screenshots\\${filename}.png` });
   }
   catch (err) {
     console.error(err);

@@ -44,3 +44,7 @@ jobs:
       run: echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $env:GITHUB_ENV # because powershell
     - run: npm install
     - run: npm run ui_test
+    - uses: actions/upload-artifact@v3
+      with:
+        name: screenshots
+        path: screenshots/*.png
