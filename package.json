@@ -10,7 +10,7 @@
         "grunt-run": "^0.8.1",
         "grunt-shell": "^4.0.0",
         "load-grunt-tasks": "^5.1.0",
-        "puppeteer": "^19.0.0",
+        "puppeteer": "^19.5.0",
         "qunit": "^2.19.2"
     },
     "scripts": {
