@@ -4,7 +4,7 @@
         "url": "https://github.com/parkrrr/tip-calculator.git"
     },
     "devDependencies": {
-        "grunt": "~1.6.0",
+        "grunt": "~1.6.1",
         "grunt-contrib-connect": "~3.0.0",
         "grunt-contrib-qunit": "~6.0.0",
         "grunt-run": "^0.8.1",
