@@ -24,7 +24,6 @@ This project has unit tests and integration tests.
 The unit tests verify the functionality of the business logic and its utility functions.
 
 * The unit test results can be found in the [Actions](https://github.com/parkrrr/tip-calculator/actions) tab under the **Unit Tests** job
-* The unit tests can also be viewed as part of the live site: https://parkrrr.github.io/tip-calculator/tests/index.html
 
 ## Integration tests
 The integration tests verify proper behavior of the UI.
