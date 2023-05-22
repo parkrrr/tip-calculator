@@ -6,8 +6,6 @@ on:
     # weekly build
     - cron:  '0 1 * * 0'
   push:
-    branches:
-      - master
     paths-ignore:
       - '**.md'
       - 'LICENSE'
@@ -19,19 +17,9 @@ on:
       - 'LICENSE'
 
 jobs:
-  unit_tests:
-    name: Unit Tests
-    runs-on: windows-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-    - run: npm install
-    - run: npm run unit_test
-
-  ui_tests:
-    name: Browser Tests
-    runs-on: windows-latest
+  tests:
+    name: Browser Tests - Linux
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -41,8 +29,8 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
     - name: setting browser
-      run: echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $env:GITHUB_ENV # because powershell
-    - run: npm install
+      run: echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $GITHUB_ENV
+    - run: npm ci
     - run: npm run ui_test
     - uses: actions/upload-artifact@v3
       with:

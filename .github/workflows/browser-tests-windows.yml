@@ -1,0 +1,38 @@
+name: Tests
+
+on:
+  workflow_dispatch:
+  schedule:
+    # weekly build
+    - cron:  '0 1 * * 0'
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+
+jobs:
+  tests:
+    name: Browser Tests - Windows
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        browser: ['chrome', 'firefox'] # must be lowercase
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - name: setting browser
+      run: echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $env:GITHUB_ENV # because powershell
+    - run: npm install
+    - run: npm run ui_test
+    - uses: actions/upload-artifact@v3
+      with:
+        name: screenshots
+        path: screenshots/*.png

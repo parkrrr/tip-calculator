@@ -1,0 +1,28 @@
+name: Tests
+
+on:
+  workflow_dispatch:
+  schedule:
+    # weekly build
+    - cron:  '0 1 * * 0'
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+
+jobs:
+  tests:
+    name: Unit Tests
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - run: npm ci
+    - run: npm run unit_test
