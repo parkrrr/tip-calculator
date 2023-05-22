@@ -31,7 +31,7 @@ jobs:
     - name: setting browser
       run: echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $GITHUB_ENV
     - run: npm ci
-    - run: npm run ui_test
+    - run: npm run ui_test_linux
     - uses: actions/upload-artifact@v3
       with:
         name: screenshots
