@@ -18,8 +18,11 @@ module.exports = function (grunt) {
             },
         },
         shell: {
-            ui_test: {
+            ui_test_windows: {
                 command: '.\\node_modules\\.bin\\qunit .\\tests\\tests.ui.js',
+            },
+            ui_test_linux: {
+                command: './node_modules/.bin/qunit ./tests/tests.ui.js',
             }
         }
     });
@@ -31,5 +34,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['connect', 'qunit', 'shell:ui_test']);
     grunt.registerTask('test', ['connect', 'qunit']);
-    grunt.registerTask('ui_test', ['connect', 'shell:ui_test']);
+    grunt.registerTask('ui_test_windows', ['connect', 'shell:ui_test_windows']);
+    grunt.registerTask('ui_test_linux', ['connect', 'shell:ui_test_linux']);
 };
