@@ -30,7 +30,12 @@ jobs:
     - uses: actions/setup-node@v2
     - name: setting browser
       run: echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $env:GITHUB_ENV # because powershell
-    - run: npm install
+    - uses: nick-fields/retry@v2
+      with:
+        timeout_seconds: 300
+        max_attempts: 3
+        retry_on: error
+        command: npm ci
     - uses: nick-fields/retry@v2
       with:
         timeout_seconds: 300
