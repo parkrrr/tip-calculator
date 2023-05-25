@@ -16,7 +16,6 @@
     "scripts": {
         "test": "grunt",
         "unit_test": "grunt test",
-        "ui_test_windows": "grunt ui_test_windows",
-        "ui_test_linux": "grunt ui_test_linux"
+        "ui_test": "grunt ui_test"
     }
 }

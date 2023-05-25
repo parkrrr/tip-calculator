@@ -19,17 +19,29 @@ on:
 jobs:
   tests:
     name: Tests
-    runs-on: windows-latest
-
     strategy:
       matrix:
-        browser: ['chrome', 'firefox'] # must be lowercase
+        os: [ubuntu-latest, windows-latest]
+        browser: [chrome, firefox] # must be lowercase
+    
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
-    - name: setting browser
-      run: echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $env:GITHUB_ENV # because powershell
+
+    # https://stackoverflow.com/a/57948488
+    - name: set browser
+      run:   |
+            if [ "$RUNNER_OS" == "Linux" ]; then
+                  echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $GITHUB_ENV
+            elif [ "$RUNNER_OS" == "Windows" ]; then
+                  echo "PUPPETEER_PRODUCT=${{ matrix.browser }}" >> $env:GITHUB_ENV
+            else
+                  echo "$RUNNER_OS not supported"
+                  exit 1
+            fi
+      shell: bash
     - uses: nick-fields/retry@v2
       name: npm ci
       with:
