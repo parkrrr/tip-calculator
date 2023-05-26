@@ -33,12 +33,12 @@
                         <div class="col-sm-10">
                             <div class="input-group input-group-lg">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-outline-secondary" type="button" data-bind="click: modifyTip.bind(this, -1)">-</button>
+                                    <button class="btn btn-outline-secondary" id="tipPercentSubtract" type="button" data-bind="click: modifyTip.bind(this, -1)">-</button>
                                   </div>
                                 <input type="number" class="form-control" id="tipPercent" data-bind="value: tipPercent" />
 								<div class="input-group-append">
 									<div class="input-group-text">%</div>
-                                    <button class="btn btn-outline-secondary" type="button" data-bind="click: modifyTip.bind(this, 1)">+</button>
+                                    <button class="btn btn-outline-secondary" id="tipPercentAdd" type="button" data-bind="click: modifyTip.bind(this, 1)">+</button>
 								  </div>
                             </div>
                         </div>
@@ -64,13 +64,13 @@
                     <div class="form-group">
                         <label class="col control-label">Tip amount</label>
                         <div class="col-sm-10">
-                            <h2 class="form-control-static" data-bind="text: tipToText"></h2>
+                            <h2 class="form-control-static" id="tipAmount" data-bind="text: tipToText"></h2>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col control-label">Total</label>
                         <div class="col-sm-10">
-                            <h2 class="form-control-static" data-bind="text: roundedTotal"></h2>
+                            <h2 class="form-control-static" id="total" data-bind="text: roundedTotal"></h2>
                         </div>
                     </div>
                 </form>

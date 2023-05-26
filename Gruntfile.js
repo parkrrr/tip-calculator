@@ -1,19 +1,27 @@
-module.exports = function(grunt) {
-    // Project configuration.
+const path = require('path');
+
+module.exports = function (grunt) {
+    require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         connect: {
             server: {
-              options: {
-                port: 8080,
-                hostname: 'localhost'
-              }
+                options: {
+                    port: 8080,
+                    hostname: 'localhost'
+                }
             }
         },
         qunit: {
             all: {
                 options: {
                     urls: ['http://localhost:8080/tests/index.html']
-                }
+                },
+            },
+        },
+        shell: {
+            ui_test: {
+                command: `${path.join('node_modules', '.bin', 'qunit')} ${path.join('tests', 'tests.ui.js')}`
             }
         }
     });
@@ -21,7 +29,9 @@ module.exports = function(grunt) {
     // Load plugin
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-run');
 
-    grunt.registerTask('default', []);
+    grunt.registerTask('default', ['connect', 'qunit', 'shell:ui_test']);
     grunt.registerTask('test', ['connect', 'qunit']);
+    grunt.registerTask('ui_test', ['connect', 'shell:ui_test']);
 };

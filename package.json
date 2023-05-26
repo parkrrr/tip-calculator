@@ -4,11 +4,18 @@
         "url": "https://github.com/parkrrr/tip-calculator.git"
     },
     "devDependencies": {
-        "grunt": "~1.5.2",
+        "grunt": "~1.6.1",
         "grunt-contrib-connect": "~3.0.0",
-        "grunt-contrib-qunit": "~6.0.0"
+        "grunt-contrib-qunit": "~7.0.0",
+        "grunt-run": "^0.8.1",
+        "grunt-shell": "^4.0.0",
+        "load-grunt-tasks": "^5.1.0",
+        "puppeteer": "^20.4.0",
+        "qunit": "^2.19.4"
     },
     "scripts": {
-        "test": "grunt test"
+        "test": "grunt",
+        "unit_test": "grunt test",
+        "ui_test": "grunt ui_test"
     }
 }
