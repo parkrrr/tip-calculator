@@ -6,6 +6,8 @@ on:
     # weekly build
     - cron:  '0 1 * * 0'
   push:
+    branches:
+      - master
     paths-ignore:
       - '**.md'
       - 'LICENSE'
