@@ -1,4 +1,4 @@
-name: Browser Tests - Windows
+name: Browser Tests
 
 on:
   workflow_dispatch:
