@@ -18,7 +18,7 @@ module.exports = function (grunt) {
             },
         },
         shell: {
-            ui_test_: {
+            ui_test: {
                 command: './node_modules/.bin/qunit ./tests/tests.ui.js',
             }
         }
