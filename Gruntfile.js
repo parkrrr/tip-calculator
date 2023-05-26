@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
@@ -19,7 +21,7 @@ module.exports = function (grunt) {
         },
         shell: {
             ui_test: {
-                command: '.\\node_modules\\.bin\\qunit .\\tests\\tests.ui.js',
+                command: `${path.join('node_modules', '.bin', 'qunit')} ${path.join('tests', 'tests.ui.js')}`
             }
         }
     });
