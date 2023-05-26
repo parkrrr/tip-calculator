@@ -50,12 +50,12 @@ jobs:
         retry_on: error
         command: npm ci
     - uses: nick-fields/retry@v2
-      name: npm run ui_test_windows 
+      name: npm run ui_test
       with:
         timeout_seconds: 300
         max_attempts: 3
         retry_on: error
-        command: npm run ui_test_windows
+        command: npm run ui_test
     - uses: actions/upload-artifact@v3
       with:
         name: screenshots
