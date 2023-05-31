@@ -23,15 +23,23 @@ module.exports = function (grunt) {
             ui_test: {
                 command: `${path.join('node_modules', '.bin', 'qunit')} ${path.join('tests', 'tests.ui.js')}`
             }
+        },
+        copy: {
+            main: {
+                src: `${path.join('node_modules', 'knockout', 'build', 'output', 'knockout-latest.js')}` ,
+                dest: `${path.join('js', 'knockout-min.js')}`,
+              },
         }
     });
 
     // Load plugin
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-run');
 
-    grunt.registerTask('default', ['connect', 'qunit', 'shell:ui_test']);
-    grunt.registerTask('test', ['connect', 'qunit']);
-    grunt.registerTask('ui_test', ['connect', 'shell:ui_test']);
+    grunt.registerTask('default', ['deploy', 'connect', 'qunit', 'shell:ui_test']);
+    grunt.registerTask('deploy', ['copy']);
+    grunt.registerTask('test', ['deploy', 'connect', 'qunit']);
+    grunt.registerTask('ui_test', ['connect', 'deploy', 'shell:ui_test']);
 };
