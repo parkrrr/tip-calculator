@@ -5,6 +5,9 @@ QUnit.test("isNullOrWhitespace", function(assert) {
     assert.ok(Engine.isEmptyOrWhitespace("  "), "Tab character is considered empty");
     assert.ok(Engine.isEmptyOrWhitespace("     "), "Multiple spaces is considered empty");
     assert.notOk(Engine.isEmptyOrWhitespace("Cat"), "Non-empty string spaces is considered non-empty");
+    assert.notOk(Engine.isEmptyOrWhitespace(" Cat"), "String with leading spaces is considered non-empty");
+    assert.notOk(Engine.isEmptyOrWhitespace("Cat "), "String with trailing spaces is considered non-empty");
+    assert.notOk(Engine.isEmptyOrWhitespace(undefined), "Undefined string is not considered empty");
 });
 
 QUnit.test("isNumeric", function(assert) {
@@ -25,6 +28,7 @@ QUnit.test("calculateTip input validation", function(assert) {
     assert.notOk(Engine.calculateTip("0.00", "20", " "), "Empty rounding direction returns false");
     assert.notOk(Engine.calculateTip("0.00", "20", "sideways"), "Invalid rounding direction returns false");
     assert.ok(Engine.calculateTip("0.00", "20", "up") !== "false", "Valid parameters returns not-false");
+    assert.equal(Engine.calculateTip("-1.00", "20", "up"), 0, "Negative bill amount sets bill amount to 0");
 });
 
 QUnit.test("calculateTip algorithm", function(assert) {
