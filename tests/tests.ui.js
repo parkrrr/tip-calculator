@@ -91,7 +91,7 @@ QUnit.module('Adjusting tip percentage', hooks => {
 async function launchBrowser(fn, filename, args) {
   let browser = null;
   try {
-    browser = await puppeteer.launch(args);
+    browser = await puppeteer.launch({...args, headless: "new" });
     const page = await browser.newPage();
 
     await page.emulate(puppeteer.devices["Pixel 5"]);
