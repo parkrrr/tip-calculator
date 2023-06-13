@@ -28,17 +28,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
+
       - name: Setup Environment
         uses: actions/setup-node@v2
-      - run: npm install --omit=dev
-      - run: npm run deploy
+
+      - name: Install production dependencies
+        run: npm install --omit=dev
+
+      - name: Copy production files
+        run: npm run deploy
+
+      - name: Remove node_modules
+        run: rm -r node_modules
+
+      - name: Remove other config files
+        run: rm Gruntfile.js package-lock.json pakcage.json
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
           path: '.'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
