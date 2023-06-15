@@ -45,7 +45,7 @@ jobs:
         run: rm -r node_modules
 
       - name: Remove other config files
-        run: rm Gruntfile.js package-lock.json pakcage.json
+        run: rm Gruntfile.js package-lock.json package.json
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
