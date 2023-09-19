@@ -5,7 +5,7 @@
     },
     "devDependencies": {
         "grunt-contrib-connect": "^4.0.0",
-        "grunt-contrib-qunit": "^7.0.1",
+        "grunt-contrib-qunit": "^8.0.1",
         "grunt-shell": "^4.0.0",
         "puppeteer": "~21.1.0"
     },
