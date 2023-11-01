@@ -33,7 +33,7 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Setup Environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
 
       - name: Install production dependencies
         run: npm install --omit=dev
