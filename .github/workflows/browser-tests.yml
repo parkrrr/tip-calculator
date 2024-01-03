@@ -60,5 +60,5 @@ jobs:
         command: npm run ui_test
     - uses: actions/upload-artifact@v3
       with:
-        name: screenshots
-        path: screenshots/*.png
+        name: screenshots-${{ matrix.os }}-${{ matrix.browser }}
+        path: screenshots\\*.png
