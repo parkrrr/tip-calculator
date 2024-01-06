@@ -29,8 +29,8 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
 
     # https://stackoverflow.com/a/57948488
     - name: set browser
@@ -58,7 +58,7 @@ jobs:
         max_attempts: 3
         retry_on: error
         command: npm run ui_test
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
-        name: screenshots
-        path: screenshots/*.png
+        name: screenshots-${{ matrix.os }}-${{ matrix.browser }}
+        path: screenshots\\*.png
