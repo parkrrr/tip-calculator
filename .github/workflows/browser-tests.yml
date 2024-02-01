@@ -44,14 +44,14 @@ jobs:
                   exit 1
             fi
       shell: bash
-    - uses: nick-fields/retry@v2
+    - uses: nick-fields/retry@v3
       name: npm ci
       with:
         timeout_seconds: 300
         max_attempts: 3
         retry_on: error
         command: npm ci
-    - uses: nick-fields/retry@v2
+    - uses: nick-fields/retry@v3
       name: npm run ui_test
       with:
         timeout_seconds: 300
