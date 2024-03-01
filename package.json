@@ -7,7 +7,7 @@
         "grunt-contrib-connect": "^4.0.0",
         "grunt-contrib-qunit": "^8.0.1",
         "grunt-shell": "^4.0.0",
-        "puppeteer": "~21.6.1"
+        "puppeteer": "~22.3.0"
     },
     "scripts": {
         "test": "grunt",
