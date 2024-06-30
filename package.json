@@ -5,7 +5,7 @@
     },
     "dependencies": {
         "knockout": "^3.5.1",
-        "qunit": "^2.20.0"
+        "qunit": "^2.21.0"
     },
     "devDependencies": {
         "grunt": "^1.6.1",
