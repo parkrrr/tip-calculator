@@ -94,7 +94,7 @@ async function launchBrowser(fn, filename, args) {
     browser = await puppeteer.launch({...args, headless: "new" });
     const page = await browser.newPage();
 
-    await page.emulate(puppeteer.devices["Pixel 5"]);
+    await page.emulate(puppeteer.KnownDevices["Pixel 5"]);
 
     page.on('console', message => console.log(`${message.type()} ${message.text()}`))
         .on('pageerror', message => console.log(message))
