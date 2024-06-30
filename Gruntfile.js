@@ -26,9 +26,21 @@ module.exports = function (grunt) {
         },
         copy: {
             main: {
-                src: `${path.join('node_modules', 'knockout', 'build', 'output', 'knockout-latest.js')}` ,
-                dest: `${path.join('js', 'knockout-min.js')}`,
-              },
+                files: [
+                    {
+                        src: `${path.join('node_modules', 'knockout', 'build', 'output', 'knockout-latest.js')}`,
+                        dest: `${path.join('js', 'knockout-min.js')}`,
+                    },
+                    {
+                        src: `${path.join('node_modules', 'qunit', 'qunit', 'qunit.js')}`,
+                        dest: `${path.join('js', 'qunit.js')}`,
+                    },
+                    {
+                        src: `${path.join('node_modules', 'qunit', 'qunit', 'qunit.css')}`,
+                        dest: `${path.join('css', 'qunit.css')}`,
+                    },
+                ]
+            }
         }
     });
 
